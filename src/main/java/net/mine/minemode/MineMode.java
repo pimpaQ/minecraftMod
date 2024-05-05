@@ -18,7 +18,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
-import static net.mine.minemode.items.ModItems.BANANA;
+import static net.mine.minemode.items.ModItems.*;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(MineMode.MOD_ID)
@@ -46,7 +46,6 @@ public class MineMode
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
-
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         // Some common setup code
@@ -63,8 +62,12 @@ public class MineMode
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-        if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS)
+        if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
             event.accept(BANANA);
+            event.accept(ENERGY_DRINK);
+        }
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES)
+            event.accept(FIREBALL_STICK);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

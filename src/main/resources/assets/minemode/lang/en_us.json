@@ -4,5 +4,7 @@
   "language_code": "en_us",
   "author": "Pampa",
 
-  "item.minemode.banana": "Bananas"
+  "item.minemode.banana": "Bananas",
+  "item.minemode.energydrink": "Energy^-",
+  "item.minemode.fireballstick": "FireBall Stick"
 }

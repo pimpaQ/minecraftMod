@@ -4,5 +4,7 @@
   "language_code": "ru_ru",
   "author": "Pampa",
 
-  "item.minemode.banana": "Бананчик"
+  "item.minemode.banana": "Бананчик",
+  "item.minemode.energydrink": "Энергетик",
+  "item.minemode.fireballstick": "Волшебная палка"
 }
