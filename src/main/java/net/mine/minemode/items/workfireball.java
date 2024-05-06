@@ -17,19 +17,28 @@ public class workfireball extends Item {
     public workfireball(){
         super(new Properties());
     }
-
+    private int cooldown = 20 * 3;
+    private long lastUsed = 0;
     @Override
     public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
+
         if (!world.isClientSide) {
+            long currentTime = world.getGameTime();
+
+            if (currentTime - lastUsed < cooldown) {
+                return new InteractionResultHolder<>(InteractionResult.FAIL, player.getItemInHand(hand));
+            }
+
             Vec3 lookVector = player.getLookAngle();
             double x = player.getX();
-            double y = player.getY() + 1.5f;
+            double y = player.getY();
             double z = player.getZ();
 
-            // Создаем и запускаем файербол
             SmallFireball fireball = new SmallFireball(world, player, 0, 0, 0);
             fireball.shoot(lookVector.x, lookVector.y, lookVector.z, 1.5f, 1.0f);
             world.addFreshEntity(fireball);
+
+            lastUsed = currentTime;
         }
 
         return new InteractionResultHolder<>(InteractionResult.SUCCESS, player.getItemInHand(hand));
